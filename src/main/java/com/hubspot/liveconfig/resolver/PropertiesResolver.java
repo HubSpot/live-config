@@ -16,7 +16,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
 
-public class PropertiesResolver extends MapResolver {
+public class PropertiesResolver extends ForwardingMapResolver {
   private static final Logger LOG = Logger.getLogger(PropertiesResolver.class);
   private static final ThreadFactory threadFactory = new ThreadFactory() {
     @Override

@@ -1,22 +1,16 @@
 package com.hubspot.liveconfig.resolver;
 
-import com.google.common.base.Optional;
-
 import java.util.Map;
-import java.util.Set;
 
-public abstract class MapResolver implements Resolver {
+public class MapResolver extends ForwardingMapResolver {
+  private final Map<String, String> properties;
 
-  protected abstract Map<String, String> delegate();
-
-  @Override
-  public Optional<String> get(String key) {
-    return Optional.fromNullable(delegate().get(key));
+  public MapResolver(Map<String, String> properties) {
+    this.properties = properties;
   }
 
   @Override
-  public Set<String> keySet() {
-    return delegate().keySet();
+  protected Map<String, String> delegate() {
+    return properties;
   }
-
 }

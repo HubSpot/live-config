@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
 
-public class SystemPropertiesResolver extends MapResolver {
+public class SystemPropertiesResolver extends ForwardingMapResolver {
 
   private final Map<String, String> properties;
 

@@ -8,7 +8,7 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
 
-public class EnvironmentResolver extends MapResolver {
+public class EnvironmentResolver extends ForwardingMapResolver {
 
   private final Map<String, String> envMap;
 
