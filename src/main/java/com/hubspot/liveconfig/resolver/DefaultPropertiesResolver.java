@@ -19,8 +19,15 @@ public class DefaultPropertiesResolver extends MapResolver {
   private static final Logger LOG = Logger.getLogger(DefaultPropertiesResolver.class);
   private static final String DUPLICATE_MESSAGE = "There is a duplicate property for %s. It was first set by %s project, but then set again by %s project";
 
+  private final Map<String, String> properties;
+
   public DefaultPropertiesResolver(String... packages) {
-    super(new DefaultPropertiesScanner(packages).asMap());
+    this.properties = new DefaultPropertiesScanner(packages).asMap();
+  }
+
+  @Override
+  protected Map<String, String> delegate() {
+    return properties;
   }
 
   private static class DefaultPropertiesScanner {

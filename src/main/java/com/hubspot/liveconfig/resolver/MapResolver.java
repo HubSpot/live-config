@@ -5,22 +5,18 @@ import com.google.common.base.Optional;
 import java.util.Map;
 import java.util.Set;
 
-public class MapResolver implements Resolver {
+public abstract class MapResolver implements Resolver {
 
-  private final Map<String, String> map;
-
-  public MapResolver(Map<String, String> map) {
-    this.map = map;
-  }
+  protected abstract Map<String, String> delegate();
 
   @Override
   public Optional<String> get(String key) {
-    return Optional.fromNullable(map.get(key));
+    return Optional.fromNullable(delegate().get(key));
   }
 
   @Override
   public Set<String> keySet() {
-    return map.keySet();
+    return delegate().keySet();
   }
 
 }

@@ -3,12 +3,20 @@ package com.hubspot.liveconfig.resolver;
 import com.google.common.collect.Maps;
 
 import java.util.Collections;
+import java.util.Map;
 import java.util.Set;
 
 public class SystemPropertiesResolver extends MapResolver {
 
+  private final Map<String, String> properties;
+
   public SystemPropertiesResolver() {
-    super(Maps.fromProperties(System.getProperties()));
+    this.properties = Maps.fromProperties(System.getProperties());
+  }
+
+  @Override
+  protected Map<String, String> delegate() {
+    return properties;
   }
 
   @Override

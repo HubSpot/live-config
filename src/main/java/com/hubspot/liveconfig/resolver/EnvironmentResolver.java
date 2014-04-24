@@ -10,13 +10,20 @@ import java.util.Set;
 
 public class EnvironmentResolver extends MapResolver {
 
+  private final Map<String, String> envMap;
+
   public EnvironmentResolver() {
-    super(transformEnvMap(System.getenv()));
+    this.envMap = transformEnvMap(System.getenv());
   }
 
   @VisibleForTesting
   EnvironmentResolver(Map<String, String> map) {
-    super(transformEnvMap(map));
+    this.envMap = transformEnvMap(map);
+  }
+
+  @Override
+  protected Map<String, String> delegate() {
+    return envMap;
   }
 
   @Override
