@@ -20,9 +20,9 @@ public class ChainedResolverTest {
   @Before
   public void setUp() {
     List<Resolver> resolvers = ImmutableList.<Resolver>builder()
-        .add(new ForwardingMapResolver(mapA))
-        .add(new ForwardingMapResolver(mapB))
-        .add(new ForwardingMapResolver(mapC))
+        .add(new MapResolver(mapA))
+        .add(new MapResolver(mapB))
+        .add(new MapResolver(mapC))
         .build();
     resolver = new ChainedResolver(resolvers);
   }
