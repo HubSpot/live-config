@@ -20,7 +20,7 @@
 
   <groupId>com.hubspot.liveconfig</groupId>
   <artifactId>live-config</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <name>live-config</name>
   <description>Live configuration for Java applications</description>
   <url>https://github.com/HubSpot/live-config</url>

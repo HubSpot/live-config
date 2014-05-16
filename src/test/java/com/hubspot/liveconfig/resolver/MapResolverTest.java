@@ -13,7 +13,7 @@ public class MapResolverTest {
   private static final Map<String, String> map = ImmutableMap.of("foo.bar.baz", "true");
   private static final Set<String> keySet = map.keySet();
 
-  private MapResolver resolver;
+  private ForwardingMapResolver resolver;
 
   @Before
   public void setUp() {
