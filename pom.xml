@@ -20,7 +20,7 @@
 
   <groupId>com.hubspot.liveconfig</groupId>
   <artifactId>live-config</artifactId>
-  <version>1.0.1</version>
+  <version>1.1.0</version>
   <name>live-config</name>
   <description>Live configuration for Java applications</description>
   <url>https://github.com/HubSpot/live-config</url>
@@ -51,17 +51,12 @@
     <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
-      <version>[10.+,15.0]</version>
+      <version>[10.+,17.0]</version>
     </dependency>
     <dependency>
       <groupId>com.google.inject</groupId>
       <artifactId>guice</artifactId>
       <version>3.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.reflections</groupId>
-      <artifactId>reflections</artifactId>
-      <version>0.9.8</version>
     </dependency>
     <dependency>
       <groupId>log4j</groupId>
