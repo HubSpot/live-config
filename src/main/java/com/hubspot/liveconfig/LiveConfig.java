@@ -39,11 +39,6 @@ public class LiveConfig {
       return this;
     }
 
-    public Builder usingDefaultProperties(String... packages) {
-      resolvers.add(new DefaultPropertiesResolver(packages));
-      return this;
-    }
-
     public Builder usingMap(Map<String, String> map) {
       resolvers.add(new MapResolver(map));
       return this;

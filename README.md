@@ -99,7 +99,7 @@ class Widgets {
 
 ## Advanced Usage
 
-Obviously static maps by themselves are not very useful. Additionally LiveConfig has out of the box support for environment variables, system properties and default properties files bundled with your jars. The real fun begins when you hook LiveConfig up to custom resolver that can fetch configuration from an external service, like a database or an API. Here's a simple example...
+Static maps by themselves are not very useful, so LiveConfig has out of the box support for environment variables, system properties and properties files located on your filesystem. The real fun begins when you hook LiveConfig up to custom resolver that can fetch configuration from an external service, like a database or an API. Here's a simple example...
 
 
 ```java
