@@ -26,5 +26,4 @@ public class LiveLong extends LiveValue<Long> {
   public LiveLong(LiveConfig config, List<String> keys, Optional<Long> fallback) {
     super(config, keys, ValueFunctions.toLong(), fallback);
   }
-  
 }

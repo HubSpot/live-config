@@ -5,7 +5,6 @@ import com.google.common.base.Joiner;
 import com.google.common.base.Optional;
 import com.google.common.collect.ImmutableList;
 import com.hubspot.liveconfig.LiveConfig;
-import com.hubspot.liveconfig.value.AbstractOptionalValue;
 
 import java.util.List;
 
@@ -48,5 +47,4 @@ public class LiveValue<T> extends AbstractOptionalValue<T> {
   public String toString() {
     return String.format("LiveValue{%s}=%s", Joiner.on(",").join(keys), orNull());
   }
-
 }

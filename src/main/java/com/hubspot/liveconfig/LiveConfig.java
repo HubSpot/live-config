@@ -4,7 +4,12 @@ import com.google.common.base.Function;
 import com.google.common.base.Optional;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.hubspot.liveconfig.resolver.*;
+import com.hubspot.liveconfig.resolver.ChainedResolver;
+import com.hubspot.liveconfig.resolver.EnvironmentResolver;
+import com.hubspot.liveconfig.resolver.MapResolver;
+import com.hubspot.liveconfig.resolver.PropertiesResolver;
+import com.hubspot.liveconfig.resolver.Resolver;
+import com.hubspot.liveconfig.resolver.SystemPropertiesResolver;
 import com.hubspot.liveconfig.value.LiveBoolean;
 import com.hubspot.liveconfig.value.LiveDouble;
 import com.hubspot.liveconfig.value.LiveFloat;
@@ -119,11 +124,11 @@ public class LiveConfig {
   public long getLong(String... keys) {
     return getLongMaybe(keys).get();
   }
-  
+
   public Optional<Float> getFloatMaybe(String... keys) {
     return getValueMaybe(Arrays.asList(keys), ValueFunctions.toFloat());
   }
-  
+
   public float getFloat(String... keys) {
     return getFloatMaybe(keys).get();
   }

@@ -8,6 +8,7 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
+import javax.annotation.Nonnull;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.Collections;
@@ -20,7 +21,7 @@ public class ValueFunctions {
 
   private static final Function<String, Integer> STRING_TO_INTEGER = new Function<String, Integer>() {
     @Override
-    public Integer apply(String value) {
+    public Integer apply(@Nonnull String value) {
       return Integer.parseInt(value);
     }
   };
@@ -31,7 +32,7 @@ public class ValueFunctions {
 
   private static final Function<String, Long> STRING_TO_LONG = new Function<String, Long>() {
     @Override
-    public Long apply(String value) {
+    public Long apply(@Nonnull String value) {
       return Long.parseLong(value);
     }
   };
@@ -42,7 +43,7 @@ public class ValueFunctions {
 
   private static final Function<String, Float> STRING_TO_FLOAT = new Function<String, Float>() {
     @Override
-    public Float apply(String value) {
+    public Float apply(@Nonnull String value) {
       return Float.parseFloat(value);
     }
   };
@@ -53,7 +54,7 @@ public class ValueFunctions {
 
   private static final Function<String, Double> STRING_TO_DOUBLE = new Function<String, Double>() {
     @Override
-    public Double apply(String value) {
+    public Double apply(@Nonnull String value) {
       return Double.parseDouble(value);
     }
   };

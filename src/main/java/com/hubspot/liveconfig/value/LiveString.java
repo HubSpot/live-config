@@ -27,5 +27,4 @@ public class LiveString extends LiveValue<String> {
   public LiveString(LiveConfig config, List<String> keys, Optional<String> fallback) {
     super(config, keys, Functions.<String>identity(), fallback);
   }
-  
 }

@@ -26,5 +26,4 @@ public class LiveInt extends LiveValue<Integer> {
   public LiveInt(LiveConfig config, List<String> keys, Optional<Integer> fallback) {
     super(config, keys, ValueFunctions.toInt(), fallback);
   }
-  
 }
