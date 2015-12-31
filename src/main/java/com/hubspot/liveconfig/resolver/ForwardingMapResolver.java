@@ -1,8 +1,8 @@
 package com.hubspot.liveconfig.resolver;
 
-import com.google.common.base.Optional;
 
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 public abstract class ForwardingMapResolver implements Resolver {
@@ -11,7 +11,7 @@ public abstract class ForwardingMapResolver implements Resolver {
 
   @Override
   public Optional<String> get(String key) {
-    return Optional.fromNullable(delegate().get(key));
+    return Optional.ofNullable(delegate().get(key));
   }
 
   @Override

@@ -1,6 +1,7 @@
 package com.hubspot.liveconfig.value;
 
-import com.google.common.base.Optional;
+
+import java.util.Optional;
 
 public abstract class AbstractValue<T> extends AbstractOptionalValue<T> {
 
@@ -11,7 +12,7 @@ public abstract class AbstractValue<T> extends AbstractOptionalValue<T> {
 
   @Override
   public Optional<T> getMaybe() {
-    return Optional.fromNullable(get());
+    return Optional.ofNullable(get());
   }
 
 }

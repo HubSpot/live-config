@@ -1,7 +1,6 @@
 package com.hubspot.liveconfig.resolver;
 
-import com.google.common.base.Optional;
-
+import java.util.Optional;
 import java.util.Set;
 
 public interface Resolver {

@@ -1,12 +1,13 @@
 package com.hubspot.liveconfig.value;
 
-import com.google.common.base.Optional;
+
+import java.util.Optional;
 
 public class FixedValue<T> extends AbstractOptionalValue<T> {
   private final Optional<T> value;
 
   public FixedValue() {
-    this.value = Optional.absent();
+    this.value = Optional.empty();
   }
 
   public FixedValue(T value) {
@@ -28,6 +29,6 @@ public class FixedValue<T> extends AbstractOptionalValue<T> {
 
   @Override
   public String toString() {
-    return String.format("FixedValue{}=%s", value.orNull());
+    return String.format("FixedValue{}=%s", value.orElse(null));
   }
 }

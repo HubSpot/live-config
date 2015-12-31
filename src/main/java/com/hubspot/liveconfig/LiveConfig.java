@@ -1,7 +1,5 @@
 package com.hubspot.liveconfig;
 
-import com.google.common.base.Function;
-import com.google.common.base.Optional;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.hubspot.liveconfig.resolver.ChainedResolver;
@@ -23,7 +21,10 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Properties;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class LiveConfig {
 
@@ -102,15 +103,15 @@ public class LiveConfig {
         return valueMaybe;
       }
     }
-    return Optional.absent();
+    return Optional.empty();
   }
 
   public String getString(String... keys) {
-    return getStringMaybe(keys).orNull();
+    return getStringMaybe(keys).orElse(null);
   }
 
   public Optional<Integer> getIntMaybe(String... keys) {
-    return getValueMaybe(Arrays.asList(keys), ValueFunctions.toInt());
+    return getValueMaybe(Arrays.asList(keys), Integer::parseInt);
   }
 
   public int getInt(String... keys) {
@@ -118,7 +119,7 @@ public class LiveConfig {
   }
 
   public Optional<Long> getLongMaybe(String... keys) {
-    return getValueMaybe(Arrays.asList(keys), ValueFunctions.toLong());
+    return getValueMaybe(Arrays.asList(keys), Long::parseLong);
   }
 
   public long getLong(String... keys) {
@@ -126,7 +127,7 @@ public class LiveConfig {
   }
 
   public Optional<Float> getFloatMaybe(String... keys) {
-    return getValueMaybe(Arrays.asList(keys), ValueFunctions.toFloat());
+    return getValueMaybe(Arrays.asList(keys), Float::parseFloat);
   }
 
   public float getFloat(String... keys) {
@@ -142,7 +143,7 @@ public class LiveConfig {
   }
 
   public Optional<Double> getDoubleMaybe(String... keys) {
-    return getValueMaybe(Arrays.asList(keys), ValueFunctions.toDouble());
+    return getValueMaybe(Arrays.asList(keys), Double::parseDouble);
   }
 
   public double getDouble(String... keys) {
@@ -150,7 +151,7 @@ public class LiveConfig {
   }
 
   public <T> Optional<T> getValueMaybe(List<String> keys, Function<String, T> func) {
-    return ValueFunctions.transform(getStringMaybe(keys), func);
+    return getStringMaybe(keys).map(func);
   }
 
   public Map<String, String> getProperties(String... keys) {
@@ -158,7 +159,7 @@ public class LiveConfig {
   }
 
   public Map<String, String> getProperties(List<String> keys) {
-    return getValueMaybe(keys, ValueFunctions.toProperties()).or(Collections.<String, String>emptyMap());
+    return getValueMaybe(keys, ValueFunctions.toProperties()).orElse(Collections.<String, String>emptyMap());
   }
 
   public List<String> getList(String... keys) {
@@ -166,7 +167,7 @@ public class LiveConfig {
   }
 
   public List<String> getList(List<String> keys) {
-    return getValueMaybe(keys, ValueFunctions.toList()).or(Collections.<String>emptyList());
+    return getValueMaybe(keys, ValueFunctions.toList()).orElse(Collections.<String>emptyList());
   }
 
   public <T> List<T> getList(String key, Function<String, T> func) {
@@ -174,7 +175,9 @@ public class LiveConfig {
   }
 
   public <T> List<T> getList(List<String> keys, Function<String, T> func) {
-    return Lists.newArrayList(Lists.transform(getList(keys), func));
+    return getList(keys).stream()
+        .map(func)
+        .collect(Collectors.toList());
   }
 
   //
@@ -300,7 +303,7 @@ public class LiveConfig {
   public Map<String, String> asMap() {
     Map<String, String> map = Maps.newTreeMap();
     for (String key : resolver.keySet()) {
-      map.put(key, resolver.get(key).orNull());
+      map.put(key, resolver.get(key).orElse(null));
     }
     return Collections.unmodifiableMap(map);
   }
