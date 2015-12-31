@@ -1,7 +1,6 @@
 package com.hubspot.liveconfig;
 
 import com.google.common.collect.ImmutableMap;
-import com.hubspot.liveconfig.value.ValueFunctions;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -97,7 +96,7 @@ public class LiveConfigTest {
 
   @Test
   public void testGetListInt() {
-    Assert.assertEquals(Arrays.asList(1, 2, 3, 4, 5), config.getList("mylist", ValueFunctions.toInt()));
+    Assert.assertEquals(Arrays.asList(1, 2, 3, 4, 5), config.getList("mylist", Integer::parseInt));
   }
 
 }

@@ -1,7 +1,8 @@
 package com.hubspot.liveconfig.value;
 
-import com.google.common.base.Function;
-import com.google.common.base.Optional;
+
+import java.util.Optional;
+import java.util.function.Function;
 
 public interface Value<T> {
   T get();

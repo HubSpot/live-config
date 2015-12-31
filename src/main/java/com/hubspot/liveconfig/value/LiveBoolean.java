@@ -1,9 +1,10 @@
 package com.hubspot.liveconfig.value;
 
-import com.google.common.base.Optional;
+
 import com.hubspot.liveconfig.LiveConfig;
 
 import java.util.List;
+import java.util.Optional;
 
 public class LiveBoolean extends LiveValue<Boolean> {
 

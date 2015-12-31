@@ -1,7 +1,8 @@
 package com.hubspot.liveconfig.value;
 
-import com.google.common.base.Function;
-import com.google.common.base.Optional;
+
+import java.util.Optional;
+import java.util.function.Function;
 
 public abstract class AbstractOptionalValue<T> implements Value<T> {
 
@@ -17,17 +18,21 @@ public abstract class AbstractOptionalValue<T> implements Value<T> {
 
   @Override
   public T or(T defaultValue) {
-    return getMaybe().or(defaultValue);
+    return getMaybe().orElse(defaultValue);
   }
 
   @Override
   public T orNull() {
-    return getMaybe().orNull();
+    return getMaybe().orElse(null);
   }
 
   @Override
   public Optional<T> or(Optional<T> secondChoice) {
-    return getMaybe().or(secondChoice);
+    final Optional<T> maybe = getMaybe();
+    if (!maybe.isPresent()) {
+      return secondChoice;
+    }
+    return maybe;
   }
 
   @Override

@@ -1,11 +1,12 @@
 package com.hubspot.liveconfig.resolver;
 
-import com.google.common.base.Optional;
+
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 public class ChainedResolver implements Resolver {
@@ -24,7 +25,7 @@ public class ChainedResolver implements Resolver {
         return value;
       }
     }
-    return Optional.absent();
+    return Optional.empty();
   }
 
   @Override
