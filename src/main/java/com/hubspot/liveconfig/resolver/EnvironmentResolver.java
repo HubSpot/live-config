@@ -4,9 +4,7 @@ import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.CaseFormat;
 import com.google.common.collect.Maps;
 
-import java.util.Collections;
 import java.util.Map;
-import java.util.Set;
 
 public class EnvironmentResolver extends ForwardingMapResolver {
 
@@ -24,11 +22,6 @@ public class EnvironmentResolver extends ForwardingMapResolver {
   @Override
   protected Map<String, String> delegate() {
     return envMap;
-  }
-
-  @Override
-  public Set<String> keySet() {
-    return Collections.emptySet();
   }
 
   private static Map<String, String> transformEnvMap(Map<String, String> envMap) {
