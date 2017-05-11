@@ -2,9 +2,7 @@ package com.hubspot.liveconfig.resolver;
 
 import com.google.common.collect.Maps;
 
-import java.util.Collections;
 import java.util.Map;
-import java.util.Set;
 
 public class SystemPropertiesResolver extends ForwardingMapResolver {
 
@@ -17,10 +15,5 @@ public class SystemPropertiesResolver extends ForwardingMapResolver {
   @Override
   protected Map<String, String> delegate() {
     return properties;
-  }
-
-  @Override
-  public Set<String> keySet() {
-    return Collections.emptySet();
   }
 }
