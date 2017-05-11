@@ -27,7 +27,7 @@ public class EnvironmentResolverTest {
 
   @Test
   public void testKeySet() {
-    Assert.assertEquals(Collections.<String>emptySet(), resolver.keySet());
+    Assert.assertEquals(Collections.singleton("build.info"), resolver.keySet());
   }
 
 }
